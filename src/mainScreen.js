@@ -14,8 +14,9 @@ import {RectButton} from 'react-native-gesture-handler';
 import {useSelector, useDispatch} from 'react-redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {getElementData} from './api/api';
-
+import colors, { color } from "./config/colors";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import CryptoIcon from 'react-native-crypto-icons';
 
 function mainScreen(props) {
   const dispatch = useDispatch();
@@ -27,13 +28,6 @@ function mainScreen(props) {
     AsyncStorage.getItem('data').then((currencyData) => {
       let parsedData = JSON.parse(currencyData);
       dispatch({type: 'RESTORE_DATA', payload: JSON.parse(currencyData)});
-      // for (let currency of parsedData.availableCurrency){
-      //    getElementData(currency).then((result)=>{
-      //     if(result.status){
-      //       dispatch({type: 'ADD_CURRENCY', payload: {currency:currency,currencyData:result.data}});
-      //     }
-      //   });
-      // }
     });
   }, []);
 
@@ -54,13 +48,7 @@ function mainScreen(props) {
       <Swipeable renderRightActions={() => renderRightActions(index)}>
         <View style={style.itemContainer}>
           <View style={style.iconContainer}>
-            {item.isIcon ? (
-              <Icon name={item.Icon} size={60} color={item.IconColor} />
-            ) : (
-              <Text style={{fontSize: 24, fontWeight: 'bold'}}>
-                {item.ShortName}
-              </Text>
-            )}
+          <CryptoIcon name= {item.ShortName.toLowerCase()} style={{ fontSize: 50, color: 'black' }} />
           </View>
           <View style={style.dataContainer}>
             <View>
@@ -109,7 +97,7 @@ function mainScreen(props) {
   };
   return (
     <View style={style.containerStyle}>
-      <SafeAreaView style={{flex: 0, backgroundColor: '#385774'}} />
+      <SafeAreaView style={{flex: 0, backgroundColor: colors.primary}} />
 
       <View style={style.headerStyle}>
         <View style={style.subheaderStyle}>
@@ -137,11 +125,11 @@ const style = StyleSheet.create({
   containerStyle: {flex: 1, backgroundColor: 'white'},
 
   addButtonStyle: {
-    color: '#385774',
+    color: colors.primary,
   },
   headerStyle: {
     flex: 1,
-    backgroundColor: '#385774',
+    backgroundColor: colors.primary,
     justifyContent: 'center',
     alignItems: 'center',
     elevation: 2,

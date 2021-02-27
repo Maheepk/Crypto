@@ -7,11 +7,12 @@ import {
   StyleSheet,
   TextInput,
   Alert,
+  ActivityIndicator,
 } from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import {addCurrency} from './actions/actions';
 import {getElementData} from './api/api';
-
+import colors, { color } from "./config/colors";
 export default function AddScreen(props) {
   const dispatch = useDispatch();
 
@@ -23,12 +24,13 @@ export default function AddScreen(props) {
       setisLoading(true);
 
       let result = await getElementData(currencyName);
+      setisLoading(false);
       if (result.status) {
         if (data.availableCurrency.indexOf(result.data.ShortName) > -1) {
           Alert.alert('Warning', `${currencyName} already added to your list`);
         } else {
           onChangeText('');
-
+          
           dispatch({
             type: 'ADD_CURRENCY',
             payload: {currency: currencyName, currencyData: result.data},
@@ -59,10 +61,11 @@ export default function AddScreen(props) {
         onPress={() => {
           props.navigation.goBack();
         }}>
-        <Text style={{fontSize: 16}}> {' < '} Back To List</Text>
+        <Text style={{fontSize: 16, color: colors.primary}}> {' < '} Back To List</Text>
       </TouchableOpacity>
       <View style={styles.contentStyle}>
-        <Text style={{fontSize: 18}}>Add New Cryptocurrency</Text>
+        { isLoading ? <ActivityIndicator size="large" style = {{color: colors.primary}} /> : null}
+        <Text style={{fontSize: 18, color: colors.primary, fontWeight : "bold"}}>Add New Cryptocurrency</Text>
         <View style={{height: '2%'}} />
         <TextInput
           style={styles.textinputStyle}
@@ -90,13 +93,13 @@ const styles = StyleSheet.create({
   textinputStyle: {
     width: '100%',
     height: 50,
-    borderColor: '#e1e1e1',
+    borderColor: colors.primary,
     borderWidth: 1,
     borderRadius: 5,
     paddingHorizontal: 10,
   },
   addButtonStyle: {
-    backgroundColor: '#fad24e',
+    backgroundColor: colors.secondary,
     width: 100,
     height: 50,
     alignItems: 'center',

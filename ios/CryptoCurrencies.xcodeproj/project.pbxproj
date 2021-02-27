@@ -11,7 +11,7 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		3498AEA525E6A34000BEB318 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 3498AEA425E6A34000BEB318 /* Fonts */; };
+		3465C8D125EA93C00012EA90 /* CryptoIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3465C8AF25EA93450012EA90 /* CryptoIcons.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		97278F53DB3AA60D2AA289D0 /* libPods-CryptoCurrencies.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36EA67D71895DE9636AB1A0C /* libPods-CryptoCurrencies.a */; };
 /* End PBXBuildFile section */
@@ -39,7 +39,8 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = CryptoCurrencies/main.m; sourceTree = "<group>"; };
 		186D03182B5B3BE72FDF22B0 /* Pods-CryptoCurrencies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoCurrencies.debug.xcconfig"; path = "Target Support Files/Pods-CryptoCurrencies/Pods-CryptoCurrencies.debug.xcconfig"; sourceTree = "<group>"; };
 		2FCC4EE3BDC2DB5BA962B6D1 /* libPods-CryptoCurrencies-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CryptoCurrencies-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3498AEA425E6A34000BEB318 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
+		3465C8AF25EA93450012EA90 /* CryptoIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CryptoIcons.ttf; sourceTree = "<group>"; };
+		3465C8D625EA95AA0012EA90 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialCommunityIcons.ttf; sourceTree = "<group>"; };
 		36EA67D71895DE9636AB1A0C /* libPods-CryptoCurrencies.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CryptoCurrencies.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		73DE0ABE19BE400418E50C8C /* Pods-CryptoCurrencies-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoCurrencies-tvOS.release.xcconfig"; path = "Target Support Files/Pods-CryptoCurrencies-tvOS/Pods-CryptoCurrencies-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = CryptoCurrencies/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -127,6 +128,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		3465C8A225EA93450012EA90 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				3465C8AF25EA93450012EA90 /* CryptoIcons.ttf */,
+				3465C8D625EA95AA0012EA90 /* MaterialCommunityIcons.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -137,7 +147,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				3498AEA425E6A34000BEB318 /* Fonts */,
+				3465C8A225EA93450012EA90 /* Fonts */,
 				13B07FAE1A68108700A75B9A /* CryptoCurrencies */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* CryptoCurrenciesTests */,
@@ -249,7 +259,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3498AEA525E6A34000BEB318 /* Fonts in Resources */,
+				3465C8D125EA93C00012EA90 /* CryptoIcons.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
@@ -270,7 +280,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 		4820F5FDCD8255E3692A3E6A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
