@@ -16,6 +16,7 @@
     "@react-navigation/stack": "^5.14.3",
     "apisauce": "^2.0.1",
     "check-node-version": "^4.1.0",
+    "moment": "^2.29.1",
     "react": "16.13.1",
     "react-native": "0.63.4",
     "react-native-crypto-icons": "^1.0.1",

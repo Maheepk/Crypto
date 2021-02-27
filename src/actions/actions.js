@@ -1,4 +1,4 @@
-import {REMOVE_ITEM,ADD_CURRENCY} from '../constants';
+import {REMOVE_ITEM,ADD_CURRENCY, CLEAR_DATA} from '../constants';
 export function removeItem(index) {
   return {
     type: REMOVE_ITEM,
@@ -10,4 +10,9 @@ export function addCurrency(currency){
         type: ADD_CURRENCY,
         payload: currency
     }
+}
+export function clearCurrency(){
+  return {
+      type: CLEAR_DATA,
+  }
 }

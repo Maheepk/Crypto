@@ -7,7 +7,6 @@ import {
   FlatList,
   TouchableOpacity,
   SafeAreaView,
-  Animated,
 } from 'react-native';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import {RectButton} from 'react-native-gesture-handler';
@@ -15,8 +14,9 @@ import {useSelector, useDispatch} from 'react-redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {getElementData} from './api/api';
 import colors, { color } from "./config/colors";
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import IconMaterial from 'react-native-vector-icons/MaterialCommunityIcons';
 import CryptoIcon from 'react-native-crypto-icons';
+import { clearCurrency } from "./actions/actions";
 
 function mainScreen(props) {
   const dispatch = useDispatch();
@@ -28,6 +28,22 @@ function mainScreen(props) {
     AsyncStorage.getItem('data').then((currencyData) => {
       let parsedData = JSON.parse(currencyData);
       dispatch({type: 'RESTORE_DATA', payload: JSON.parse(currencyData)});
+
+      const endDate = new Date(parsedData.endDate);
+      const currentDate = new Date();      
+      const difference =  currentDate - endDate;
+
+      if (difference > 0) {
+        // Clear Previous Records..
+        dispatch(clearCurrency());
+        for (let currency of parsedData.availableCurrency) {
+          getElementData(currency).then((result) => {
+            if (result.status) {
+              dispatch({type: 'ADD_CURRENCY', payload: {currency:currency,currencyData:result.data}});
+            }
+          });
+        }
+      }
     });
   }, []);
 
@@ -65,9 +81,9 @@ function mainScreen(props) {
               </Text>
               <View style={{flexDirection: 'row', alignItems: 'center'}}>
                 {item.Direction ? (
-                  <Icon name="arrow-top-right" size={18} color="green" />
+                  <IconMaterial name="arrow-top-right" size={18} color="green" />
                 ) : (
-                  <Icon name="arrow-bottom-left" size={18} color="red" />
+                  <IconMaterial name="arrow-bottom-left" size={18} color="red" />
                 )}
                 <Text style={{fontSize: 18, color: numberColor}}>
                   {item.PercentageChange}%

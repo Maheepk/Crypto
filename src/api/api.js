@@ -20,27 +20,7 @@ export async function getElementData(element) {
   }
 }
 export function parseCurrencyData(currencyData) {
-  let icon;
   let color;
-  let isIcon;
-  switch (currencyData.name) {
-    case 'Bitcoin':
-      icon = 'bitcoin';
-      color = '#ff9900';
-      isIcon = true;
-      break;
-    case 'Ethereum':
-      icon = 'ethereum';
-      color = 'black';
-      isIcon = true;
-      break;
-
-    default:
-      isIcon = false;
-      icon = 'noicon';
-      color = 'black';
-      break;
-  }
   let price = currencyData.market_data.price_usd?.toString().substring(0, 8);
   let change = currencyData.market_data.percent_change_usd_last_24_hours;
   let Direction = change > 0;
@@ -51,9 +31,7 @@ export function parseCurrencyData(currencyData) {
     Price: price,
     PercentageChange: changeString,
     Direction: Direction,
-    isIcon: isIcon,
     IconColor: color,
-    Icon: icon,
   };
   return currencyObject;
 }
